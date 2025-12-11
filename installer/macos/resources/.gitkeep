@@ -1,0 +1,6 @@
+# Place icon.icns here
+# You can convert the PNG icon to ICNS format using:
+# - iconutil (macOS built-in tool)
+# - Online converters like https://cloudconvert.com/png-to-icns
+#
+# Source PNG: launcher/src/main/resources/com/skcraft/launcher/icon.png

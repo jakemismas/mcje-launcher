@@ -1,0 +1,17 @@
+# Windows Installer Resources
+#
+# Required files:
+# - icon.ico - Application icon (256x256 recommended, multi-resolution)
+#
+# Optional files (created by build script):
+# - launcher.exe - EXE wrapper (created by Launch4j if available)
+#
+# To create icon.ico from the existing PNG:
+# 1. Use the icon from: launcher\src\main\resources\com\skcraft\launcher\icon.png
+# 2. Convert using online tools like:
+#    - https://convertico.com/
+#    - https://icoconvert.com/
+#    - https://cloudconvert.com/png-to-ico
+#
+# For best results, include multiple sizes in the ICO:
+# - 16x16, 32x32, 48x48, 64x64, 128x128, 256x256

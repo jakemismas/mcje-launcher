@@ -1,4 +1,10 @@
-/installer/
+# Installer build artifacts (but keep scripts)
+/installer/windows/jre/
+/installer/windows/*.zip
+/installer/windows/launcher-bootstrap.jar
+/installer/windows/resources/launcher.exe
+/installer/macos/build/
+/installer/macos/*.tar.gz
 
 ### Eclipse ###
 *.pydevproject
