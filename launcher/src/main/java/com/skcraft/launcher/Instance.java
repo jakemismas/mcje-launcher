@@ -125,6 +125,27 @@ public class Instance implements Comparable<Instance> {
         return new File(getContentDir(), "custom_jar.jar");
     }
 
+    /**
+     * Get the path to the custom icon file for this instance.
+     *
+     * @return the icon file path (may not exist)
+     */
+    @JsonIgnore
+    public File getIconPath() {
+        return new File(getDir(), "icon.png");
+    }
+
+    /**
+     * Check if this instance has a custom icon.
+     *
+     * @return true if a custom icon file exists
+     */
+    @JsonIgnore
+    public boolean hasCustomIcon() {
+        File iconFile = getIconPath();
+        return iconFile.exists() && iconFile.isFile();
+    }
+
     @Override
     public String toString() {
         return name;

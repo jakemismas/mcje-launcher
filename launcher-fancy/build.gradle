@@ -18,6 +18,7 @@ repositories {
 dependencies {
     implementation project(path: ':launcher')
     implementation 'io.github.cottonmc.insubstantial:substance:7.3.1-SNAPSHOT'
+    implementation 'net.java.dev.jna:jna-platform:5.11.0'
 }
 
 shadowJar {
