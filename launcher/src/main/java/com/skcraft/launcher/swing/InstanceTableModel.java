@@ -33,6 +33,19 @@ public class InstanceTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    /**
+     * Get the instance at the specified row index.
+     *
+     * @param rowIndex the row index
+     * @return the instance, or null if index is out of bounds
+     */
+    public Instance getInstance(int rowIndex) {
+        if (rowIndex >= 0 && rowIndex < instances.size()) {
+            return instances.get(rowIndex);
+        }
+        return null;
+    }
+
     @Override
     public String getColumnName(int columnIndex) {
         switch (columnIndex) {
