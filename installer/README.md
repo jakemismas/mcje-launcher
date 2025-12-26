@@ -200,6 +200,19 @@ https://mcje-bucket.sfo3.digitaloceanspaces.com/
 - Make sure you have enough disk space
 - Try running with `sudo`
 
+**"Could not find tools.jar" or Java JDK errors**
+- The project requires Java 8 JDK to compile
+- On Apple Silicon Macs, download x64 Java 8 JDK (runs via Rosetta):
+  ```bash
+  curl -L "https://api.adoptium.net/v3/binary/latest/8/ga/mac/x64/jdk/hotspot/normal/eclipse?project=jdk" -o /tmp/openjdk8.tar.gz
+  mkdir -p ~/java
+  tar -xzf /tmp/openjdk8.tar.gz -C ~/java/
+  ```
+- Create `gradle.properties` in project root with:
+  ```
+  org.gradle.java.installations.paths=/Users/YOUR_USERNAME/java/jdk8u472-b08/Contents/Home
+  ```
+
 **App won't open - "damaged or can't be opened"**
 - The app needs to be code signed for distribution
 - For testing, right-click and select "Open"

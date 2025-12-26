@@ -116,7 +116,6 @@ fi
 
 # Launch the bootstrap
 exec "$JAVA_EXE" \
-    -XstartOnFirstThread \
     -Xdock:name="MCJE Launcher" \
     -Xdock:icon="$APP_DIR/Resources/icon.icns" \
     -jar "$BOOTSTRAP_JAR" \
