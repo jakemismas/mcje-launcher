@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft - Jake Edition</title>
+    <style>
+        @font-face {
+            font-family: 'Minecrafter';
+            src: url('Minecrafter-reg.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-image: url('dirt.png');
+            background-repeat: repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border: 4px solid #8B8B8B;
+            box-shadow:
+                inset 2px 2px 0 rgba(255, 255, 255, 0.4),
+                inset -2px -2px 0 rgba(0, 0, 0, 0.4),
+                0 8px 32px rgba(0, 0, 0, 0.5);
+            padding: 60px 40px;
+            max-width: 750px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Minecrafter', monospace;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-family: 'Minecrafter', monospace;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1em;
+            letter-spacing: 1px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(to bottom, rgb(67, 160, 71) 0%, rgb(46, 125, 50) 100%);
+            color: white;
+            padding: 25px 60px;
+            border: none;
+            text-decoration: none;
+            font-family: 'Minecrafter', monospace;
+            font-size: 1.3em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: all 0.1s ease;
+            text-shadow: 2px 2px 0 rgb(30, 80, 30);
+            image-rendering: pixelated;
+            box-shadow:
+                inset 3px 3px 0 rgba(100, 200, 100, 0.7),
+                inset -3px -3px 0 rgba(20, 80, 20, 0.7),
+                0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(20, 80, 20, 0.7);
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(to bottom, rgb(85, 180, 89) 0%, rgb(56, 142, 60) 100%);
+            box-shadow:
+                inset 3px 3px 0 rgba(120, 220, 120, 0.7),
+                inset -3px -3px 0 rgba(30, 90, 30, 0.7),
+                0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .download-btn:active {
+            background: linear-gradient(to bottom, rgb(40, 120, 44) 0%, rgb(30, 100, 34) 100%);
+            box-shadow:
+                inset 3px 3px 0 rgba(60, 140, 64, 0.7),
+                inset -3px -3px 0 rgba(15, 60, 17, 0.7),
+                0 2px 4px rgba(0, 0, 0, 0.3);
+            transform: translateY(2px);
+        }
+
+        .os-icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .platform-links {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #8B8B8B;
+            font-family: 'Minecrafter', monospace;
+        }
+
+        .platform-link {
+            display: inline-block;
+            color: rgb(67, 160, 71);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9em;
+            transition: color 0.2s ease;
+            letter-spacing: 1px;
+        }
+
+        .platform-link:hover {
+            color: rgb(85, 180, 89);
+            text-decoration: underline;
+        }
+
+        .features {
+            margin-top: 30px;
+            color: #555;
+            font-size: 0.95em;
+            line-height: 2;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .features li {
+            list-style: none;
+            padding: 8px 0;
+        }
+
+        .features li:before {
+            content: "✓ ";
+            color: rgb(67, 160, 71);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .note {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 235, 205, 0.9);
+            border: 2px solid #8B8B8B;
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3);
+            color: #555;
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+
+        .note strong {
+            color: #333;
+            font-family: 'Minecrafter', monospace;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Minecraft - Jake Edition</h1>
+        <p class="subtitle">MCJE Launcher Installer</p>
+
+        <div id="primary-download">
+            <!-- Auto-detected OS download button will appear here -->
+        </div>
+
+        <ul class="features">
+            <li>Bundled Java 21 - No installation required</li>
+            <li>Auto-updates to latest version</li>
+            <li>Jake made this for you cause he <3 you</li>
+            <li>Works on Windows and macOS</li>
+        </ul>
+
+        <div class="platform-links">
+            <span style="color: #999;">Download for:</span>
+            <a href="MCJE-Launcher-Setup.exe" class="platform-link" id="windows-link">WINDOWS</a>
+            <a href="MCJE-Launcher-Installer.dmg" class="platform-link" id="mac-link">MACOS</a>
+        </div>
+
+        <div class="note" id="mac-note" style="display: none;">
+            <strong>macOS Users:</strong> On first launch, right-click the app and select "Open" to bypass Gatekeeper security. This is only needed once.
+        </div>
+    </div>
+
+    <script>
+        // Detect user's operating system
+        function detectOS() {
+            const userAgent = window.navigator.userAgent;
+            const platform = window.navigator.platform;
+            const macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K', 'darwin'];
+            const windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
+
+            if (macosPlatforms.some(p => platform.includes(p) || userAgent.includes(p))) {
+                return 'mac';
+            } else if (windowsPlatforms.some(p => platform.includes(p) || userAgent.includes(p))) {
+                return 'windows';
+            }
+            return 'unknown';
+        }
+
+        // Create primary download button based on OS
+        const os = detectOS();
+        const primaryDownload = document.getElementById('primary-download');
+
+        if (os === 'mac') {
+            primaryDownload.innerHTML = `
+                <a href="MCJE-Launcher-Installer.dmg" class="download-btn">
+                    <span class="os-icon">🍎</span>DOWNLOAD
+                </a>
+            `;
+            document.getElementById('mac-note').style.display = 'block';
+        } else if (os === 'windows') {
+            primaryDownload.innerHTML = `
+                <a href="MCJE-Launcher-Setup.exe" class="download-btn">
+                    <span class="os-icon">🪟</span>DOWNLOAD
+                </a>
+            `;
+        } else {
+            primaryDownload.innerHTML = `
+                <a href="MCJE-Launcher-Setup.exe" class="download-btn">
+                    <span class="os-icon">💾</span>DOWNLOAD
+                </a>
+            `;
+        }
+    </script>
+</body>
+</html>
