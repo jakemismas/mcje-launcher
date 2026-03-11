@@ -75,9 +75,20 @@ latestUrl=https://mcje-bucket.sfo3.digitaloceanspaces.com/latest.json
 | macOS | `~/.MCJE` |
 | Linux | `$XDG_DATA_HOME/MCJE` or `~/.local/share/MCJE` |
 
-## DigitalOcean Spaces bucket
+## Hosting your files
 
-The bucket at `https://mcje-bucket.sfo3.digitaloceanspaces.com/` needs these files:
+This project is currently set up to use a DigitalOcean Spaces bucket, but you can use anything that serves static files over HTTPS (AWS S3, Cloudflare R2, GitHub Pages, your own web server, whatever). The launcher doesn't care where the files live, it just hits the URLs in the config.
+
+To switch to a different host, update the URLs in these two files and rebuild:
+
+1. `launcher/src/main/resources/com/skcraft/launcher/launcher.properties` (newsUrl, packageListUrl, selfUpdateUrl)
+2. `launcher-bootstrap/src/main/resources/com/skcraft/launcher/bootstrap.properties` (latestUrl)
+
+Also update the `url` inside your `latest.json` to point to wherever you're hosting the launcher JAR.
+
+### What needs to be hosted
+
+Your host needs these files:
 
 ```
 latest.json        Tells the bootstrap what version to download
