@@ -105,8 +105,9 @@ public class JavaProcessBuilder {
         }
 
         if (permGen > 0) {
-            // If we know the Java version, only add permsize for 7 or older
-            if (getRuntime() == null || getRuntime().getMajorVersion() < 8) {
+            // Only add permsize for Java 7 or older (removed in Java 8+)
+            // If runtime is unknown, assume modern Java since Minecraft 1.13+ requires Java 8+
+            if (getRuntime() != null && getRuntime().getMajorVersion() < 8) {
                 command.add("-XX:MaxPermSize=" + permGen + "M");
             }
         }

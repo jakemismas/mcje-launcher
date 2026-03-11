@@ -193,6 +193,12 @@ public class Bootstrap {
     private File getUserLauncherDir() {
         String osName = System.getProperty("os.name").toLowerCase();
         if (osName.contains("win")) {
+            // Use LOCALAPPDATA to avoid OneDrive-redirected Documents folder
+            String localAppData = System.getenv("LOCALAPPDATA");
+            if (localAppData != null && !localAppData.isEmpty()) {
+                return new File(localAppData, getProperties().getProperty("homeFolderWindows"));
+            }
+            // Fallback to Documents if LOCALAPPDATA is not available
             return new File(getFileChooseDefaultDir(), getProperties().getProperty("homeFolderWindows"));
         }
 
@@ -201,7 +207,7 @@ public class Bootstrap {
 
         if (osName.contains("linux") && !dotFolder.exists() && xdgFolderName != null && !xdgFolderName.isEmpty()) {
             String xdgDataHome = System.getenv("XDG_DATA_HOME");
-            if (xdgDataHome.isEmpty()) {
+            if (xdgDataHome == null || xdgDataHome.isEmpty()) {
                 xdgDataHome = System.getProperty("user.home") + "/.local/share";
             }
 

@@ -40,7 +40,33 @@ public class WindowsRuntimeFinder implements PlatformRuntimeFinder {
 
 	@Override
 	public List<File> getCandidateJavaLocations() {
-		return Collections.emptyList();
+		List<File> candidates = new ArrayList<>();
+
+		// Check for bundled JRE in the application installation directory
+		try {
+			File jarLocation = new File(WindowsRuntimeFinder.class.getProtectionDomain()
+					.getCodeSource().getLocation().toURI());
+			// Navigate up from the JAR to the installation directory
+			File installDir = jarLocation.getParentFile();
+			if (installDir != null) {
+				// Check both the install dir and one level up (in case JAR is in a subdirectory)
+				File bundledJre = new File(installDir, "jre");
+				if (bundledJre.isDirectory()) {
+					candidates.add(bundledJre);
+				}
+				File parentDir = installDir.getParentFile();
+				if (parentDir != null) {
+					bundledJre = new File(parentDir, "jre");
+					if (bundledJre.isDirectory()) {
+						candidates.add(bundledJre);
+					}
+				}
+			}
+		} catch (Exception e) {
+			log.log(Level.WARNING, "Failed to detect bundled JRE location", e);
+		}
+
+		return candidates;
 	}
 
 	@Override

@@ -166,6 +166,16 @@ public class LaunchSupervisor {
         Futures.addCallback(future, new FutureCallback<ProcessConsoleFrame>() {
             @Override
             public void onSuccess(@Nullable ProcessConsoleFrame result) {
+                // Only close the console frame if the game exited cleanly (exit code 0)
+                // Keep it open on crash so users can see the error
+                if (result != null) {
+                    if (result.getLastExitCode() == 0) {
+                        result.dispose();
+                    } else {
+                        log.warning("Game exited with code " + result.getLastExitCode() + ", keeping console open");
+                        result.requestFocus();
+                    }
+                }
                 // gameStarted was only invoked on success above, so only call gameClosed on success
                 listener.gameClosed();
             }

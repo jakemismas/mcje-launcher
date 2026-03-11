@@ -676,8 +676,7 @@ public class FancyLauncherFrame extends JFrame {
 
         @Override
         public void gameClosed() {
-            Window newLauncherWindow = launcher.showLauncherWindow();
-            launcher.getUpdateManager().checkForUpdate(newLauncherWindow);
+            System.exit(0);
         }
     }
 }

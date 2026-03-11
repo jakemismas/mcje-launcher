@@ -162,3 +162,7 @@ $RECYCLE.BIN/
 /versions
 /accounts.dat
 /config.json
+
+# Claude Code local config
+.claude/
+nul

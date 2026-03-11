@@ -31,6 +31,7 @@ public class ProcessConsoleFrame extends ConsoleFrame {
 
     @Getter private Process process;
     @Getter @Setter private boolean killOnClose;
+    @Getter private int lastExitCode = 0;
 
     private PrintWriter processOut;
 
@@ -57,7 +58,8 @@ public class ProcessConsoleFrame extends ConsoleFrame {
         try {
             Process lastProcess = this.process;
             if (lastProcess != null) {
-                processOut.println(tr("console.processEndCode", lastProcess.exitValue()));
+                lastExitCode = lastProcess.exitValue();
+                processOut.println(tr("console.processEndCode", lastExitCode));
             }
         } catch (IllegalThreadStateException e) {
         }
